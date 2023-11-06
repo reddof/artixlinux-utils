@@ -40,11 +40,11 @@ Masukkan mount point partisi efi anda, misalnya /boot/efi :
 
 			read -p "
 
-Masukkan bootloader id anda, misalnya 'Arch Linux' :
+Masukkan bootloader id anda, misalnya Artix Linux :
 
 " bootloaderid
 
-			grub-install --efi-directory=$efi --bootloader-id=$bootloaderid
+			grub-install --efi-directory=$efi --bootloader-id='$bootloaderid'
 			grub-mkconfig -o /boot/grub/grub.cfg
 			;;
 			[Nn]*) return
