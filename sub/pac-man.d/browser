@@ -1,0 +1,179 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Install brave
+set-brave () { clear
+
+read -p "
+
+Apakah ingin install Brave ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy brave-bin --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install chromium
+set-chromium () { clear
+
+read -p "
+
+Apakah ingin install Chromium ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy chromium --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Opera
+set-opera () { clear
+
+read -p "
+
+Apakah ingin install Opera ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy opera --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Microsoft edge
+set-edge () { clear
+
+read -p "
+
+Apakah ingin install Microsoft Edge ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy microsoft-edge-stable-bin --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install google chrome
+set-google-chrome () { clear
+
+	read -p "
+
+Apakah ingin install Google Chrome ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy google-chrome --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install firefox
+set-firefox () { clear
+read -p "
+
+Apakah ingin install Firefox ? [Y/n] " yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy firefox --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+clear
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                                 BROWSERS                                   ##
+##                                                                            ##
+##  1. Mozilla Firefox                                                        ##
+##  2. Google Chrome ( aktifkan dulu chaotic-aur )                            ##
+##  3. Microsoft Edge ( aktifkan dulu chaotic-aur )                           ##
+##  4. Opera                                                                  ##
+##  5. Chromium                                                               ##
+##  6. Brave ( aktifkan dulu chaotic-aur )                                    ##
+##  q. Kembali ke menu sebelumnya                                             ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" brow
+	case $brow in
+		1) set-firefox
+		;;
+		2) set-google-chrome
+		;;
+		3) set-edge
+		;;
+		4) set-opera
+		;;
+		5) set-chromium
+		;;
+		6) set-brave
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/pac-man.d/./browser

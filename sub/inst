@@ -1,0 +1,84 @@
+#!/bin/bash
+
+DIR=$(pwd)
+INST_DIR="$(pwd)/sub/inst.d"
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Restore settings dan files pribadi.
+set-restore () { clear
+
+read -p "
+
+Ini adalah restore file pribadi saya ,lakukan ini  ? [Y/n] :
+
+" yn
+
+	case $yn in
+		[Y/y]*) echo "
+
+Mohon tunggu proses backup sedang berlangsung ...
+
+"
+		cp -R /home/Storage/Data/fonts/fonts /usr/share
+		fc-cache -fv
+		cp -R /home/Storage/Data/wallpapers/archlinux /usr/share/backgrounds
+		;;
+		[N/n]*) return
+		;;
+		*) error
+		;;
+esac
+}
+
+# Install menu
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                    ##
+################################################################################
+##                                 INSTALL                                    ##
+##                                                                            ##
+##  1. Artix Install                                                           ##
+##  2. Install Third Parties Packages                                         ##
+##  3. Install Desktop Environment                                            ##
+##  4. Restore Settings dan FIles Pribadi                                     ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" util
+	case $util in
+		1) $INST_DIR/./artix-install
+		;;
+		2) $INST_DIR/./third
+		;;
+		3) $INST_DIR/./deinst
+		;;
+		4) set-restore
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/./inst

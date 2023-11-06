@@ -1,0 +1,65 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+echo "
+################################################################################
+##                   ARCH LINUX UTILITIES script by Reddof                    ##
+################################################################################
+##                        INSTALL DESKTOP ENVIRONMENT                         ##
+##                                                                            ##
+##  1. Cinnamon                                                               ##
+##  2. KDE                                                                    ##
+##  3. XFCE                                                                   ##
+##  4. Gnome                                                                  ##
+##  q. Kembali ke menu sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" de
+	case $de in
+		1) sudo pacman -Syu xorg-server pulseaudio cinnamon gnome-terminal lightdm lightdm-runit lightdm-gtk-greeter --noconfirm --overwrite "*"
+		rm -rf /etc/lightdm/lightdm.conf
+		cp $DIR/sub/inst.d/src/lightdm.conf /etc/lightdm/lightdm.conf
+		ln -sf /etc/runit/sv/lightdm /run/runit/service
+		;;
+		2) sudo pacman -Sy xorg-server pulseaudio plasma-meta kde-system kde-utilities kde-system sddm-runit --noconfirm --overwrite "*"
+		ln -sf /etc/runit/sv/sddm /run/runit/service
+		;;
+		3) sudo pacman -S - < $DIR/sub/inst.d/src/xfce-list.txt --noconfirm --overwrite "*"
+		pacman -S xorg-server pulseaudio lightdm lightdm-runit lightdm-gtk-greeter
+		rm -rf /etc/lightdm/lightdm.conf
+		cp $DIR/sub/inst.d/src/lightdm.conf /etc/lightdm/lightdm.conf
+		ln -sf /etc/runit/sv/lightdm /run/runit/service
+		;;
+		4) sudo pacman -S xorg-server pulseaudio gnome --noconfirm --overwrite "*"
+		ln -sf /etc/runit/sv/gdm /run/runit/service
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/inst.d/./deinst

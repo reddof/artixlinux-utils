@@ -1,0 +1,116 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Install Krita
+set-krita () { clear
+
+read -p "
+
+Apakah ingin install Inkscape ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy krita --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Inkscape
+set-inkscape () { clear
+
+read -p "
+
+Apakah ingin install Inkscape ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy inkscape --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install GIMP
+set-gimp () { clear
+
+read -p "
+
+Apakah ingin install GIMP ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy gimp --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+clear
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                                 GRAPHIC                                    ##
+##                                                                            ##
+##  1. GIMP                                                                   ##
+##  2. Inkscape                                                               ##
+##  3. Krita                                                                  ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" offc
+	case $offc in
+		1) set-gimp
+		;;
+		2) set-inkscape
+		;;
+		3) set-krita
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/pac-man.d/./graphic

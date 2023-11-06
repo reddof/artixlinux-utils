@@ -1,0 +1,59 @@
+#!/bin/bash
+
+DIR=$(pwd)
+PAC_DIR="$(pwd)/sub/pac-man.d"
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                             INSTALL PACKAGES                               ##
+##                                                                            ##
+##  1. Browser                                                                ##
+##  2. File Explorer                                                          ##
+##  3. Graphic                                                                ##
+##  4. Media Player                                                           ##
+##  5. Office                                                                 ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" pa
+	case $pa in
+		1) $PAC_DIR/./browser
+		;;
+		2) $PAC_DIR/./fexplorer
+		;;
+		3) $PAC_DIR/./graphic
+		;;
+		4) $PAC_DIR/./media
+		;;
+		5) $PAC_DIR/./office
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$PAC_DIR/./daily

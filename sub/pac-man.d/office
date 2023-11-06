@@ -1,0 +1,94 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Install Only Office
+set-onlyoffice () { clear
+
+read -p "
+
+Apakah ingin install Only Office ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy onlyoffice-bin --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Libre Office
+set-libreoffice () { clear
+
+read -p "
+
+Apakah ingin install Libre Office ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy libreoffice --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+clear
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                                  OFFICE                                    ##
+##                                                                            ##
+##  1. Libre Office                                                           ##
+##  3. Only Office ( Aktifkan dulu chaotic-aur )                              ##
+##  q. Kembali ke menu sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" offc
+	case $offc in
+		1) set-libreoffice
+		;;
+		2) set-onlyoffice
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/pac-man.d/./office

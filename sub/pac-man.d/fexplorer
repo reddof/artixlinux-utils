@@ -1,0 +1,158 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Install Caja
+set-caja () { clear
+
+read -p "
+
+Apakah ingin install Caja ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy caja --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Dolphin
+set-dolphin () { clear
+
+read -p "
+
+Apakah ingin install Dolphin ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy dolphin --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Thunar
+set-thunar () { clear
+
+read -p "
+
+Apakah ingin install Thunar ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy thunar --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Nautilus
+set-nautilus () { clear
+
+read -p "
+
+Apakah ingin install Nautilus ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy nautilus --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install Nemo
+set-nemo () { clear
+
+read -p "
+
+Apakah ingin install Nemo ? [Y/n] " yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy nemo --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+clear
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                               FILE EXPLORER                                ##
+##                                                                            ##
+##  1. Nemo                                                                   ##
+##  2. Nautilus                                                               ##
+##  3. Thunar                                                                 ##
+##  4. Dolphin                                                                ##
+##  5. Caja                                                                   ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" brow
+	case $brow in
+		1) set-nemo
+		;;
+		2) set-nautilus
+		;;
+		3) set-thunar
+		;;
+		4) set-dolphin
+		;;
+		5) set-caja
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/pac-man.d/./fexplorer

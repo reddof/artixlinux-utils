@@ -1,0 +1,52 @@
+#!/bin/bash
+
+DIR=$(pwd)
+INST_DIR="$(pwd)/sub/inst.d"
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                               ARCH INSTALL                                 ##
+##                                                                            ##
+##  1. Install Base Kernel                                                    ##
+##  2. Post Install                                                           ##
+##  3. Setelah Reboot                                                         ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+Silakan masukkan pilihan anda : " util
+	case $util in
+		1) $INST_DIR/./base-install
+		;;
+		2) $INST_DIR/./post-inst
+		;;
+		3) $INST_DIR/./after
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/inst.d/./arch-install

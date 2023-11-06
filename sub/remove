@@ -1,0 +1,167 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Menghapus Desktop Environment
+set-rmde () { clear
+
+	read -p "
+
+APAKAH ANDA BENAR BENAR INGIN MENGHAPUS DESKTOP ENVIRONMENT,
+DENGAN MELAKUKAN HAL TERSEBUT MAKA SETELAH DESKTOP ENVIRONMENT TERHAPUS
+MAKA KOMPUTER ANDA HANYA BISA MASUK MODE TTY.
+
+KALAU ANDA BENAR BENAR YAKIN MAKA LAKUKAN LANGKAH INI DI MODE TTY
+YAITU DENGAN MENEKAN TOMBOL Ctrl+Alt+(F1-F7)
+
+[y/N] :
+
+" ro
+		case $ro in
+				[Yy]) pacman -D --asdeps $(pacman -Qqe)
+				pacman -D --asexplicit base base-devel chaotic-keyring chaotic-mirrorlist cups cups-runit cups-pdf efibootmgr git grub gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb intel-ucode linux-firmware linux linux-lts linux-zen man-db networkmanager networkmanager-runit ntfs-3g os-prober plymouth reflector vim zsh ntp ntp-runit
+				pacman -Qtdq | pacman -Rns -
+				pacman -Qqd | pacman -Rsu -
+				;;
+				[Nn]*) return
+				;;
+				*) error
+				;;
+		esac
+}
+
+# Menghapus Orphans
+set-rmorphans () { clear
+
+	read -p "
+
+Apakah anda ingin membersihkan semua dependencies yang sudah tidak dipakai lagi ? [Y/n] :
+
+" ro
+		case $ro in
+			1) pacman -Qtdq | pacman -Rns -
+			pacman -Qqd | pacman -Rsu -
+			;;
+			[Nn]*) return
+			;;
+			*) error
+			;;
+		esac
+}
+
+# Menghapus packages
+set-remove () { clear
+
+	read -p "
+
+Masukkan nama package yang ingin di remove :
+
+" package
+
+	sudo pacman -Rcnsu $package --noconfirm
+
+	read -p "
+
+s. Remove package lain.
+
+q. Kembali ke Menu Sebelumnya.
+
+Pilihan anda :
+
+" exit
+
+		case $exit in
+			[Qq]*) return
+			;;
+			[Ss]*) set-remove
+			;;
+			*) error
+			;;
+		esac
+}
+
+# Menampilkan packages terinstall
+set-list-installed () { clear
+
+	read -p "
+
+Menampilkan semua package terinstall ? [Y/n]
+
+" yn
+		case $yn in
+			[Yy]*) pacman -Qq | less
+			;;
+			[Nn]*)
+			;;
+			*) error
+			;;
+		esac
+
+	read -p "
+
+q. Kembali ke Menu Sebelumnya.
+
+Pilihan anda :
+
+" exit
+
+		case $exit in
+			[Qq]*) return
+			;;
+			*) error
+			;;
+		esac
+}
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                    ##
+################################################################################
+##                                   REMOVE                                   ##
+##                                                                            ##
+##  1. Packages terinstall                                                    ##
+##  2. Remove Package                                                         ##
+##  3. Remove Orphans                                                         ##
+##  4. Remove DE                                                              ##
+##  q. Kembali ke Menu Sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" pa
+	case $pa in
+		1) set-list-installed
+		;;
+		2) set-remove
+		;;
+		3) set-rmorphans
+		;;
+		4) set-rmde
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/./remove

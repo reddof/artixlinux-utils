@@ -1,0 +1,169 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+# Install LXMusic
+set-lxmusic () { clear
+
+read -p "
+
+Apakah ingin install LXMusic ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy lxmusic --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+}
+
+# Install Audaciuos
+set-audacious () { clear
+
+read -p "
+
+Apakah ingin install Audacious ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy audacious --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+}
+
+# Install Rhythmbox
+set-rhythmbox () { clear
+
+	read -p "
+
+Apakah ingin install Rhythmbox ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy rhythmbox --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+}
+
+# Install MPV
+set-mpv () { clear
+
+read -p "
+
+Apakah ingin install MPV ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy mpv --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+}
+
+# Install VLC Media Player
+set-vlc () { clear
+
+	read -p "
+
+Apakah ingin install VLC ? [Y/n]
+
+" yn
+
+	case $yn in
+		[Yy]*) clear
+		sudo pacman -Sy vlc --asdeps --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+}
+
+clear
+
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+################################################################################
+##                                MEDIA PLAYER                                ##
+##                                                                            ##
+##  1. VLC Media Player                                                       ##
+##  2. MPV                                                                    ##
+##  3. Rhytmbox                                                               ##
+##  4. Audacious                                                              ##
+##  5. LXMusic                                                                ##
+##  q. Kembali ke menu sebelumnya                                             ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+
+Silakan masukkan pilihan anda :
+
+" offc
+	case $offc in
+		1) set-vlc
+		;;
+		2) set-mpv
+		;;
+		3) set-rhythmbox
+		;;
+		4) audacious
+		;;
+		5) set-lxmusic
+		;;
+		[Qq]*) exit
+		;;
+		*) echo "
+
+Input yang anda masukkan salah...
+
+		"
+		;;
+	esac
+
+$DIR/sub/pac-man.d/./media

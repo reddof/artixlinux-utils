@@ -1,0 +1,115 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+clear
+
+error () { clear
+
+read -p "
+
+Input yang anda masukkan salah !
+
+" input
+	case $input in
+		*) return
+		;;
+	esac
+}
+
+# Install yay
+set-yay () { clear
+
+read -p "
+
+Pastikan chaotic-aur harus sudah diaktifkan sebelum anda install yay,
+Apakah chaotic-aur sudah diaktifkan ? [Y/n] :
+
+" yn
+
+	case $yn in
+		[Yy]*) pacman -Sy yay --noconfirm --overwrite "*"
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+esac
+}
+
+# enable chaotic-aur
+set-chaotic () { clear
+
+read -p "
+
+Enable Chaotic-aur ? [Y/n] :
+
+" yn
+	case $yn in
+		[Yy]*) pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+		pacman-key --lsign-key 3056513887B78AEB
+		pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --asdeps --noconfirm --overwrite "*"
+		rm -rf /etc/pacman.conf
+		cp $DIR/sub/inst.d/src/pacman-chaotic.conf /etc/pacman.conf
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Enable repository 32 bit
+set-32 () { clear
+
+read -p "
+
+Enable repo 32 bit ? [Y/n] :
+
+" yn
+	case $yn in
+		[Yy]*) rm -rf /etc/pacman.conf
+		rm -rf /var/db
+		cp $DIR/sub/inst.d/src/pacman-32bit.conf /etc/pacman.conf
+		pacman -Syu --noconfirm --overwrite "*"
+		;;
+		[Nn]*) exit
+		;;
+		*) error
+		;;
+	esac
+}
+
+# Install third party
+echo "
+################################################################################
+##                   ARTIX LINUX UTILITIES script by Reddof                    ##
+################################################################################
+##                            INSTALL THIRD PARTY                             ##
+##                                                                            ##
+##  1. Enable repository 32 bit                                               ##
+##  2. Enable chaotic-aur                                                     ##
+##  3. Install yay ( enable chaotic-aur sebelum install yay )                 ##
+##  q. Kembali ke menu sebelumnya                                             ##
+##                                                                            ##
+##                                                                            ##
+##                                                                            ##
+################################################################################
+"
+
+read -p "
+Silakan masukkan pilihan anda : " third
+	case $third in
+		1) set-32
+		;;
+		2) set-chaotic
+		;;
+		3) set-yay
+		;;
+		[Qq]*) exit
+		;;
+		*) error
+		;;
+	esac
+
+$DIR/sub/inst.d/./third
