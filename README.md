@@ -4,7 +4,7 @@
 >INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
 >SAYA TIDAK BERTANGGUNGJAWAB KALAU ADA ERROR.
 
-
+![Contoh Screenshot](https://github.com/reddof/artixlinux-utils/blob/main/sub/screenshot/Screenshot_20231106_223739.png?raw=true)
 
 Didalam Script ini saya kumpulkan berbagai commands , diantaranya adalah 
 Install Artix Linux, Install DE, Install Third Party packages, 
