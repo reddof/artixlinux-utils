@@ -75,6 +75,7 @@ Apakah anda ingin mengaktifkan NetworkManager, Reflector, Cups, dan ntp ? [Y/n] 
 			[Y/y]*) nmtui
 			ln -sf /etc/runit/sv/ntpd /run/runit/service
 			ln -sf /etc/runit/sv/cupsd /run/runit/service
+			ln -sf /etc/runit/sv/sshd /run/runit/service
 
 			echo "
 
