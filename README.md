@@ -3,7 +3,7 @@
 
 
 Didalam Script ini saya kumpulkan berbagai commands , diantaranya adalah 
-Install Arch Linux, Install DE, Install Third Party packages, 
+Install Artix Linux, Install DE, Install Third Party packages, 
 Install packages yang biasa kita gunakan sehari hari, Packages Updater, dll. 
 Tinggal Jalankan dan ikuti petunjuknya.
 
@@ -18,7 +18,7 @@ sudo ./start.sh
 3. Pada waktu post install yaitu setelah chroot, anda bisa menemukan script
    ini di /archlinux-utilities/start.sh
 ```
-cd /archlinux-utils
+cd /artixlinux-utils
 ```
 ```
 sudo ./start.sh
@@ -26,7 +26,7 @@ sudo ./start.sh
 4. Begitu juga setelah reboot anda bisa menemukan script ini di
    /archlinux-utilities/start.sh
 ```
-cd /archlinux-utils
+cd /artixlinux-utils
 ```
 ```
 sudo ./start.sh
