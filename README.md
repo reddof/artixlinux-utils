@@ -1,9 +1,13 @@
 # archlinux-utils
 
+>[!WARNING]
+>INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
+>SAYA TIDAK BERTANGGUNGJAWAB KALAU ADA ERROR.
+
 
 
 Didalam Script ini saya kumpulkan berbagai commands , diantaranya adalah 
-Install Arch Linux, Install DE, Install Third Party packages, 
+Install Artix Linux, Install DE, Install Third Party packages, 
 Install packages yang biasa kita gunakan sehari hari, Packages Updater, dll. 
 Tinggal Jalankan dan ikuti petunjuknya.
 
@@ -18,7 +22,7 @@ sudo ./start.sh
 3. Pada waktu post install yaitu setelah chroot, anda bisa menemukan script
    ini di /archlinux-utilities/start.sh
 ```
-cd /archlinux-utils
+cd /artixlinux-utils
 ```
 ```
 sudo ./start.sh
@@ -26,7 +30,7 @@ sudo ./start.sh
 4. Begitu juga setelah reboot anda bisa menemukan script ini di
    /archlinux-utilities/start.sh
 ```
-cd /archlinux-utils
+cd /artixlinux-utils
 ```
 ```
 sudo ./start.sh
@@ -36,5 +40,9 @@ Dalam repository ini ada folder dan files yang bukan milik saya, saya melampirka
 
 
 credit .oh-my-zsh : https://ohmyz.sh/ semua hak dan kepemilikan adalah atas nama https://ohmyz.sh/
+
+>[!WARNING]
+>INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
+>SAYA TIDAK BERTANGGUNGJAWAB KALAU ADA ERROR
 
 Tekan titik dua dan q (:q) untuk keluar vim.
