@@ -1,5 +1,9 @@
 # archlinux-utils
 
+>[!WARNING]
+>INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
+>SAYA TIDAK BERTANGGUNGJAWAB KALAU ADA ERROR.
+
 
 
 Didalam Script ini saya kumpulkan berbagai commands , diantaranya adalah 
@@ -36,5 +40,9 @@ Dalam repository ini ada folder dan files yang bukan milik saya, saya melampirka
 
 
 credit .oh-my-zsh : https://ohmyz.sh/ semua hak dan kepemilikan adalah atas nama https://ohmyz.sh/
+
+>[!WARNING]
+>INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
+>SAYA TIDAK BERTANGGUNGJAWAB KALAU ADA ERROR
 
 Tekan titik dua dan q (:q) untuk keluar vim.
