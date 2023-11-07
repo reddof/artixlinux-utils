@@ -2,6 +2,17 @@
 
 DIR=$(pwd)
 SUB_DIR="$(pwd)/sub"
+LS=$(ls -a /mnt | grep artixlinux-utils)
+
+if [ "$LS" = "artixlinux-utils" ];
+	then
+		sudo chmod +x -R /mnt/artixlinux-utils/*
+	else
+		sudo chmod +x -R $DIR/*
+		sudo mkdir -p /mnt/artixlinux-utils
+		sudo cp -Rn $DIR/* /mnt/artixlinux-utils
+		sudo cp -Rn $DIR/.* /mnt/artixlinux-utils
+fi
 
 clear
 
