@@ -44,7 +44,7 @@ Masukkan bootloader id anda, misalnya Artix Linux :
 
 " bootloaderid
 
-			grub-install --efi-directory=$efi --bootloader-id='$bootloaderid'
+			grub-install --efi-directory=$efi --bootloader-id="$bootloaderid"
 			grub-mkconfig -o /boot/grub/grub.cfg
 			;;
 			[Nn]*) return
