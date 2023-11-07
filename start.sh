@@ -3,11 +3,6 @@
 DIR=$(pwd)
 SUB_DIR="$(pwd)/sub"
 
-chmod +x -R $DIR/*
-mkdir -p /mnt/artixlinux-utils
-cp -R $DIR/* /mnt/artixlinux-utils
-cp -R $DIR/.* /mnt/artixlinux-utils
-
 clear
 
 error () { clear
