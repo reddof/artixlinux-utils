@@ -44,11 +44,11 @@ Silakan masukkan pilihan anda :
 		cp $DIR/sub/inst.d/src/lightdm.conf /etc/lightdm/lightdm.conf
 		ln -sf /etc/runit/sv/lightdm /run/runit/service
 		;;
-		2) sudo pacman -S - < $DIR/sub/inst.d/src/kde-list.txt --noconfirm --overwrite "*"
+		2) sudo pacman -S - < $DIR/sub/inst.d/src/list-kde.txt --noconfirm --overwrite "*"
 		pacman -Sy xorg-server pulseaudio --noconfirm --overwrite "*"
 		ln -sf /etc/runit/sv/sddm /run/runit/service
 		;;
-		3) sudo pacman -S - < $DIR/sub/inst.d/src/xfce-list.txt --noconfirm --overwrite "*"
+		3) sudo pacman -S - < $DIR/sub/inst.d/src/list-xfce.txt --noconfirm --overwrite "*"
 		pacman -S xorg-server pulseaudio lightdm lightdm-runit lightdm-gtk-greeter
 		rm -rf /etc/lightdm/lightdm.conf
 		cp $DIR/sub/inst.d/src/lightdm.conf /etc/lightdm/lightdm.conf
