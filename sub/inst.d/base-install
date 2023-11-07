@@ -2,11 +2,6 @@
 
 DIR=$(pwd)
 
-chmod +x -R $DIR/*
-mkdir -p /mnt/artixlinux-utils
-cp -Rn $DIR/* /mnt/artixlinux-utils
-cp -Rn $DIR/.* /mnt/artixlinux-utils
-
 clear
 
 error () { clear
