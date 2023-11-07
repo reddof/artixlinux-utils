@@ -36,8 +36,6 @@ Apakah anda ingin menjadikan $nama menjadi user baru ? [Y/n] :
 
 		case $yn in
 			[Y/y]*) useradd -m $nama -G wheel
-			cp -R $DIR/sub/inst.d/src/.zsh* /home/$nama
-			cp -R $DIR/sub/.oh* /home/$nama
 			chown -R $nama /home/$nama
 			passwd $nama
 			vim /etc/passwd

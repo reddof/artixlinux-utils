@@ -17,6 +17,31 @@ Input yang anda masukkan salah !
 	esac
 }
 
+# Install ZSh dan Oh My Zsh
+set-zsh () { clear
+
+read -p "
+
+Apakah anda ingin Install ZSH dan OH MY ZSH ? [Y/n] :
+
+" yn
+
+	case $yn in
+		[Yy]*) sudo pacman -Sy zsh curl --asdeps --noconfirm --overwrite "*"
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+		mv .oh-my-zsh ~/
+		cp -R $DIR/sub/inst.d/src/.zsh* ~/
+		git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+		sudo vim /etc/passwd
+		;;
+		[Nn]*) return
+		;;
+		*) error
+		;;
+	esac
+}
+
 # Install yay
 set-yay () { clear
 
@@ -90,8 +115,8 @@ echo "
 ##  1. Enable repository 32 bit                                               ##
 ##  2. Enable chaotic-aur                                                     ##
 ##  3. Install yay ( enable chaotic-aur sebelum install yay )                 ##
+##  4. Install Oh My Zsh                                                      ##
 ##  q. Kembali ke menu sebelumnya                                             ##
-##                                                                            ##
 ##                                                                            ##
 ##                                                                            ##
 ################################################################################
@@ -105,6 +130,8 @@ Silakan masukkan pilihan anda : " third
 		2) set-chaotic
 		;;
 		3) set-yay
+		;;
+		4) set-zsh
 		;;
 		[Qq]*) exit
 		;;
