@@ -65,7 +65,6 @@ kdebugsettings
 kdf
 kdialog
 keditbookmarks
-keysmith
 kfind
 kgpg
 konsole
