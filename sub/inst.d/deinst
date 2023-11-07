@@ -44,7 +44,8 @@ Silakan masukkan pilihan anda :
 		cp $DIR/sub/inst.d/src/lightdm.conf /etc/lightdm/lightdm.conf
 		ln -sf /etc/runit/sv/lightdm /run/runit/service
 		;;
-		2) sudo pacman -Sy xorg-server pulseaudio plasma-meta kde-system kde-utilities kde-system sddm-runit --noconfirm --overwrite "*"
+		2) sudo pacman -S - < $DIR/sub/inst.d/src/kde-list.txt --noconfirm --overwrite "*"
+		pacman -Sy xorg-server pulseaudio --noconfirm --overwrite "*"
 		ln -sf /etc/runit/sv/sddm /run/runit/service
 		;;
 		3) sudo pacman -S - < $DIR/sub/inst.d/src/xfce-list.txt --noconfirm --overwrite "*"
