@@ -36,11 +36,6 @@ cd /artixlinux-utils
 sudo ./start.sh
 ```
 
-Dalam repository ini ada folder dan files yang bukan milik saya, saya melampirkan folder dan files tersebut hanya untuk keperluan backup dan restore settings dan files saya. 
-
-
-credit .oh-my-zsh : https://ohmyz.sh/ semua hak dan kepemilikan adalah atas nama https://ohmyz.sh/
-
 >[!WARNING]
 >INI ADALAH SCRIPT PRIBADI UNTUK KEPERLUAN INSTALL ULANG, TAPI SIAPAPUN BOLEH MENGGUNAKAN. 
 >SAYA TIDAK BERTANGGUNGJAWAB APABILA TERJADI ERROR
