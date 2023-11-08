@@ -6,7 +6,7 @@ LS=$(ls -a /mnt | grep artixlinux-utils)
 
 if [ "$LS" = "artixlinux-utils" ];
 	then
-		chmod +x -R /mnt/artixlinux-utils/*
+		echo "next"
 	else
 		chmod +x -R $DIR/*
 		mkdir -p /mnt/artixlinux-utils
