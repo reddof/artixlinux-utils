@@ -42,9 +42,9 @@ Masukkan mount point partisi efi anda, misalnya /boot/efi :
 
 Masukkan bootloader id anda, misalnya Artix Linux :
 
-" bootloaderid
+" btldrid
 
-			grub-install --efi-directory=$efi --bootloader-id="$bootloaderid"
+			grub-install --efi-directory=$efi --bootloader-id="$btldrid"
 			grub-mkconfig -o /boot/grub/grub.cfg
 			;;
 			[Nn]*) return
@@ -151,8 +151,7 @@ Apakah anda ingin mengatur zona waktu ke $region/$kota ? [Y/n] :
 
 # Setting password root
 set-password () { clear
-	cp -R $DIR/sub/inst.d/src/.zsh* /root
-	cp -R $DIR/sub/.oh* /root
+
 	read -p "
 
 Apakah ingin set password root anda ? [Y] :
