@@ -140,4 +140,4 @@ Silakan masukkan pilihan anda : " third
 		;;
 	esac
 
-$DIR/sub/inst.d/./third
+$DIR/sub/inst.d/./third-inst

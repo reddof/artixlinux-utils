@@ -67,11 +67,11 @@ Silakan masukkan pilihan anda :
 
 " util
 	case $util in
-		1) $INST_DIR/./artix-install
+		1) $INST_DIR/./artix-inst
 		;;
-		2) $INST_DIR/./third
+		2) $INST_DIR/./third-inst
 		;;
-		3) $INST_DIR/./deinst
+		3) $INST_DIR/./de-inst
 		;;
 		4) set-restore
 		;;

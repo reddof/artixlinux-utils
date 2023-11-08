@@ -63,4 +63,4 @@ Silakan masukkan pilihan anda :
 		;;
 	esac
 
-$DIR/sub/inst.d/./deinst
+$DIR/sub/inst.d/./de-inst

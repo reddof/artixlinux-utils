@@ -49,4 +49,4 @@ Silakan masukkan pilihan anda : " util
 		;;
 	esac
 
-$DIR/sub/inst.d/./arch-install
+$DIR/sub/inst.d/./artix-inst
