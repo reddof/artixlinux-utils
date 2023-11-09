@@ -8,7 +8,7 @@ if [ "$LS" = "artixlinux-utils" ];
 	then
 		echo "next"
 	else
-		chmod +x -R $DIR/*
+		chmod +x -R $DIR/* -f
 		mkdir -p /mnt/artixlinux-utils
 		cp -Rn $DIR/* /mnt/artixlinux-utils
 		cp -Rn $DIR/.* /mnt/artixlinux-utils
