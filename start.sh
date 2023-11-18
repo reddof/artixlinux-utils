@@ -2,16 +2,17 @@
 
 DIR=$(pwd)
 SUB_DIR="$(pwd)/sub"
-LS=$(ls -a /mnt | grep artixlinux-utils)
+MY_CHROOT=/mnt
+LS=$(ls -a $MY_CHROOT | grep artixlinux-utils)
 
 if [ "$LS" = "artixlinux-utils" ];
 	then
-		echo "next"
+		sudo chmod +x $MY_CHROOT/artixlinux-utils
 	else
-		chmod +x -R $DIR/* -f
-		mkdir -p /mnt/artixlinux-utils
-		cp -Rn $DIR/* /mnt/artixlinux-utils
-		cp -Rn $DIR/.* /mnt/artixlinux-utils
+		sudo chmod +x -R $DIR/* -f
+		sudo mkdir -p $MY_CHROOT/artixlinux-utils
+		sudo cp -R $DIR/* $MY_CHROOT/artixlinux-utils
+		sudo cp -R $DIR/.* $MY_CHROOT/artixlinux-utils
 fi
 
 clear
