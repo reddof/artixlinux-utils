@@ -78,7 +78,7 @@ Lanjut install $kernel dan Package pendukung [Y/n] :
 " yn
 
 		case $yn in
-			[Yy]*) basestrap /mnt base base-devel elogind-runit runit $kernel linux-firmware intel-ucode plymouth os-prober cups cups-runit cups-pdf networkmanager networkmanager-runit vim ntfs-3g man-db ntp ntp-runit openssh openssh-runit --overwrite "*"
+			[Yy]*) sudo basestrap /mnt base base-devel elogind-runit runit $kernel linux-firmware intel-ucode plymouth os-prober cups cups-runit cups-pdf networkmanager networkmanager-runit vim ntfs-3g man-db ntp ntp-runit openssh openssh-runit --overwrite "*"
 			;;
 			[Qq]*) return
 			;;
