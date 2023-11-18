@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR=$(pwd)
+MY_CHROOT=/mnt
 
 clear
 
@@ -27,8 +28,31 @@ lanjut membuat file Fstab ? [Y/n] :
 " yn
 
 		case $yn in
-			[Y/y]*) fstabgen -U /mnt > /mnt/etc/fstab
-			cat /mnt/etc/fstab
+			[Y/y]*) sudo fstabgen -U ~/fstab
+			sudo mv ~/fstab $MY_CHROOT/etc
+			FN_FSTAB=$(ls -a $MY_CHROOT/etc | grep fstab)
+			if [ "$FN_FSTAB" = "fstab" ] ;
+				then
+					cat $MY_CHROOT/etc/fstab
+					read -p "
+
+File fstab sudah berhasil dibuat ...
+
+" ret
+					case $ret in
+						*) return
+						;;
+					esac
+				else
+					read -p "
+File fstab gagal dibuat, silakan buat secara manual
+
+" ret
+					case $ret in
+						*) return
+						;;
+					esac
+			fi
 			;;
 			[N/n]*) return
 			;;

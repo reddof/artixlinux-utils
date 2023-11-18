@@ -109,7 +109,7 @@ Apakah ingin install VLC ? [Y/n]
 
 	case $yn in
 		[Yy]*) clear
-		sudo pacman -Sy vlc --asdeps --noconfirm --overwrite "*"
+		sudo pacman -Sy vlc live-media --asdeps --noconfirm --overwrite "*"
 		;;
 		[Nn]*) return
 		;;

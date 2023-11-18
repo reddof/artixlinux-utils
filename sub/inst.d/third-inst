@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR=$(pwd)
+SUB_DIR=$DIR/sub
 
 clear
 
@@ -25,16 +26,55 @@ read -p "
 Apakah anda ingin Install ZSH dan OH MY ZSH ? [Y/n] :
 
 " yn
-
 	case $yn in
-		[Yy]*)
-		sudo pacman -Sy zsh curl --asdeps --noconfirm --overwrite "*"
+		[Yy]*) sudo pacman -Sy zsh curl git --asdeps --noconfirm --overwrite "*"
+
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-		mv .oh-my-zsh ~/
-		cp $DIR/sub/inst.d/src/.zsh* ~/
-		git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-		chsh
+
+		USER=$(whoami)
+		FN_OMZ=$(ls -a /home/$USER | grep .oh*)
+
+		if [ "FN_OMZ" = ".oh-my-zsh" ] ;
+			then
+				sudo cp -r ~/.oh* /root
+			else
+				sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+				sudo cp -r ~/.oh* /root
+		fi
+
+		git clone https://github.com/zsh-users/zsh-autosuggestions.git $SUB_DIR/zsh-autosuggestions
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $SUB_DIR/zsh-syntax-highlighting
+
+		FN_ZSH_AUTO=$(ls -a /home/$USER/.oh-my-zsh/custom/plugins | grep zsh-autosuggestions)
+
+		if [ "FN_ZSH_AUTO" = "zsh-autosuggestions" ] ;
+			then
+				sudo cp -r $SUB_DIR/zsh-syntax-highlighting /root/.oh-my-zsh/custom/plugins
+				sudo cp -r $SUB_DIR/zsh-autosuggestions /root/.oh-my-zsh/custom/plugins
+			else
+				cp -r $SUB_DIR/zsh-syntax-highlighting /home/$USER/.oh-my-zsh/custom/plugins
+				cp -r $SUB_DIR/zsh-autosuggestions /home/$USER/.oh-my-zsh/custom/plugins
+				sudo cp -r $SUB_DIR/zsh-syntax-highlighting /root/.oh-my-zsh/custom/plugins
+				sudo cp -r $SUB_DIR/zsh-autosuggestions /root/.oh-my-zsh/custom/plugins
+		fi
+
+		sudo rm -rf $SUB_DIR/zsh-autosuggestions
+		sudo rm -rf $SUB_DIR/zsh-syntax-highlighting
+		cp $SUB_DIR/inst.d/src/.zsh* ~/
+		sudo cp $SUB_DIR/inst.d/src/.zsh* /root
+
+		chsh $USER
+		sudo chsh
+
+		read -p "
+
+Berhasil install dan konfigurasi ZSH ...
+
+" ret
+			case $ret in
+				*) return
+				;;
+			esac
 		;;
 		[Nn]*) return
 		;;
@@ -55,6 +95,15 @@ Apakah chaotic-aur sudah diaktifkan ? [Y/n] :
 
 	case $yn in
 		[Yy]*) pacman -Sy yay --noconfirm --overwrite "*"
+		read -p "
+
+Yay berhasil diinstall ...
+
+" ret
+			case $ret in
+				*) return
+				;;
+			esac
 		;;
 		[Nn]*) set-chaotic
 		;;
@@ -77,6 +126,15 @@ Enable Chaotic-aur ? [Y/n] :
 		pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --asdeps --noconfirm --overwrite "*"
 		rm -rf /etc/pacman.conf
 		cp $DIR/sub/inst.d/src/pacman-chaotic.conf /etc/pacman.conf
+		read -p "
+
+Chaotic-aur berhasil diaktifkan ...
+
+" ret
+			case $ret in
+				*) return
+				;;
+			esac
 		;;
 		[Nn]*) return
 		;;
@@ -98,8 +156,17 @@ Enable repo 32 bit ? [Y/n] :
 		rm -rf /var/db
 		cp $DIR/sub/inst.d/src/pacman-32bit.conf /etc/pacman.conf
 		pacman -Syu --noconfirm --overwrite "*"
+		read -p "
+
+Reository 32bit berhasil diaktifkan ...
+
+" ret
+			case $ret in
+				*) return
+				;;
+			esac
 		;;
-		[Nn]*) exit
+		[Nn]*) return
 		;;
 		*) error
 		;;
@@ -109,7 +176,7 @@ Enable repo 32 bit ? [Y/n] :
 # Install third party
 echo "
 ################################################################################
-##                   ARTIX LINUX UTILITIES script by Reddof                   ##
+##                   ARCH LINUX UTILITIES script by Reddof                    ##
 ################################################################################
 ##                            INSTALL THIRD PARTY                             ##
 ##                                                                            ##

@@ -2,6 +2,7 @@
 
 DIR=$(pwd)
 
+ln -sf /etc/runit/sv/ntpd /run/runit/service
 ln -sf /etc/runit/sv/NetworkManager /run/runit/service
 
 clear
@@ -44,7 +45,7 @@ Apakah anda ingin menjadikan $nama menjadi sudoer? [Y/n] :
 
 " sudo
 				case $sudo in
-					[Yy]*) vim /etc/sudoers
+					[Yy]*) sudo vim /etc/sudoers
 					;;
 					[Nn]*) return
 					;;
@@ -70,7 +71,6 @@ Apakah anda ingin mengaktifkan Ntp, Cups, dan Ssh ? [Y/n] :
 
 		case $yn in
 			[Y/y]*) nmtui
-			ln -sf /etc/runit/sv/ntpd /run/runit/service
 			ln -sf /etc/runit/sv/cupsd /run/runit/service
 			ln -sf /etc/runit/sv/sshd /run/runit/service
 
