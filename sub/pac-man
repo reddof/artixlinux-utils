@@ -29,7 +29,7 @@ package tersebut.
 Masukkan nama package :
 
 " pf
-pacman -Ql $pf
+sudo pacman -Ql $pf
 
 read -p "
 
@@ -95,25 +95,25 @@ Masukkan nama Package yang anda cari :
 echo "
 Hasil Pencarian Terinstall:
 "
-pacman -Qsq $package
+sudo pacman -Qsq $package
 echo "
 
 Hasil Pencarian di repo :
 
 "
-pacman -Ssq $package
+sudo pacman -Ssq $package
 echo "
 
 Package Terinstall :
 
 "
-pacman -Qi $package
+sudo pacman -Qi $package
 echo "
 
 Package di repo :
 
 "
-pacman -Si $package
+sudo pacman -Si $package
 
 read -p "
 

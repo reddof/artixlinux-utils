@@ -33,10 +33,10 @@ YAITU DENGAN MENEKAN TOMBOL Ctrl+Alt+(F1-F7)
 
 " ro
 		case $ro in
-				[Yy]) pacman -D --asdeps $(pacman -Qqe)
-				pacman -D --asexplicit base base-devel chaotic-keyring chaotic-mirrorlist cups cups-runit cups-pdf efibootmgr git grub gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb intel-ucode linux-firmware linux linux-lts linux-zen man-db networkmanager networkmanager-runit ntfs-3g os-prober plymouth reflector vim zsh ntp ntp-runit
-				pacman -Qtdq | pacman -Rns -
-				pacman -Qqd | pacman -Rsu -
+				[Yy]) sudo pacman -D --asdeps $(pacman -Qqe)
+				sudo pacman -D --asexplicit base base-devel chaotic-keyring chaotic-mirrorlist cups cups-runit cups-pdf efibootmgr git grub gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb intel-ucode linux-firmware linux linux-lts linux-zen man-db networkmanager networkmanager-runit ntfs-3g os-prober plymouth reflector vim zsh ntp ntp-runit
+				sudo pacman -Qtdq | sudo pacman -Rns -
+				sudo pacman -Qqd | sudo pacman -Rsu -
 				;;
 				[Nn]*) return
 				;;
@@ -54,8 +54,8 @@ Apakah anda ingin membersihkan semua dependencies yang sudah tidak dipakai lagi 
 
 " ro
 		case $ro in
-			1) pacman -Qtdq | pacman -Rns -
-			pacman -Qqd | pacman -Rsu -
+			1) sudo pacman -Qtdq | sudo pacman -Rns -
+			sudo pacman -Qqd | sudo pacman -Rsu -
 			;;
 			[Nn]*) return
 			;;
@@ -104,7 +104,7 @@ Menampilkan semua package terinstall ? [Y/n]
 
 " yn
 		case $yn in
-			[Yy]*) pacman -Qq | less
+			[Yy]*) sudo pacman -Qq | less
 			;;
 			[Nn]*)
 			;;
