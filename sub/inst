@@ -33,9 +33,9 @@ Ini adalah restore file pribadi saya ,lakukan ini  ? [Y/n] :
 Mohon tunggu proses backup sedang berlangsung ...
 
 "
-		sudo cp -R /media/Storage/Data/fonts/fonts /usr/share
+		cp -R /media/Storage/Data/fonts/fonts /usr/share
+		cp -R /media/Storage/Data/wallpapers/archlinux /usr/share/backgrounds
 		fc-cache -fv
-		sudo cp -R /media/Storage/Data/wallpapers/archlinux /usr/share/backgrounds
 		;;
 		[N/n]*) return
 		;;
