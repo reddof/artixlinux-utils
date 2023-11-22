@@ -49,6 +49,7 @@ powerdevil
 sddm-kcm
 systemsettings
 xdg-desktop-portal-kde
+
 dolphin
 kcron
 kde-inotify-survey
@@ -75,6 +76,8 @@ print-manager
 sweeper
 flatpak
 sddm-runit
+
+spectacle
 
 
 

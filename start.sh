@@ -4,9 +4,7 @@ DIR=$(pwd)
 SUB_DIR="$(pwd)/sub"
 MY_CHROOT=/mnt
 
-FN_DIR=$(ls -a $MY_CHROOT | grep artixlinux-utils)
-
-if [ "$FN_DIR" = "artixlinux-utils" ];
+if [ "$(ls -a $MY_CHROOT | grep artixlinux-utils)" = "artixlinux-utils" ]
 	then
 		sudo chmod +x $MY_CHROOT/artixlinux-utils
 	else

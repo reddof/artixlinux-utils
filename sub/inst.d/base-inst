@@ -30,8 +30,7 @@ lanjut membuat file Fstab ? [Y/n] :
 		case $yn in
 			[Y/y]*) sudo fstabgen -U ~/fstab
 			sudo mv ~/fstab $MY_CHROOT/etc
-			FN_FSTAB=$(ls -a $MY_CHROOT/etc | grep fstab)
-			if [ "$FN_FSTAB" = "fstab" ] ;
+			if [ "$(ls -a $MY_CHROOT/etc | grep fstab)" = "fstab" ] ;
 				then
 					cat $MY_CHROOT/etc/fstab
 					read -p "

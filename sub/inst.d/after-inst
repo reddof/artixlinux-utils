@@ -65,7 +65,7 @@ set-services () { clear
 
 	read -p "
 
-Apakah anda ingin mengaktifkan Ntp, Cups, dan Ssh ? [Y/n] :
+Apakah anda ingin mengaktifkan Cups, dan Ssh ? [Y/n] :
 
 " yn
 

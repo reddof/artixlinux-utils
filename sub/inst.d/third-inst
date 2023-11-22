@@ -32,9 +32,8 @@ Apakah anda ingin Install ZSH dan OH MY ZSH ? [Y/n] :
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 		USER=$(whoami)
-		FN_OMZ=$(ls -a /home/$USER | grep .oh*)
 
-		if [ "FN_OMZ" = ".oh-my-zsh" ] ;
+		if [ "$(ls -a /home/$USER | grep .oh*)" = ".oh-my-zsh" ] ;
 			then
 				sudo cp -r ~/.oh* /root
 			else
@@ -45,9 +44,7 @@ Apakah anda ingin Install ZSH dan OH MY ZSH ? [Y/n] :
 		git clone https://github.com/zsh-users/zsh-autosuggestions.git $SUB_DIR/zsh-autosuggestions
 		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $SUB_DIR/zsh-syntax-highlighting
 
-		FN_ZSH_AUTO=$(ls -a /home/$USER/.oh-my-zsh/custom/plugins | grep zsh-autosuggestions)
-
-		if [ "FN_ZSH_AUTO" = "zsh-autosuggestions" ] ;
+		if [ "$(ls -a /home/$USER/.oh-my-zsh/custom/plugins | grep zsh-autosuggestions)" = "zsh-autosuggestions" ]
 			then
 				sudo cp -r $SUB_DIR/zsh-syntax-highlighting /root/.oh-my-zsh/custom/plugins
 				sudo cp -r $SUB_DIR/zsh-autosuggestions /root/.oh-my-zsh/custom/plugins
@@ -94,7 +91,7 @@ Apakah chaotic-aur sudah diaktifkan ? [Y/n] :
 " yn
 
 	case $yn in
-		[Yy]*) pacman -Sy yay --noconfirm --overwrite "*"
+		[Yy]*) sudo pacman -Sy yay --noconfirm --overwrite "*"
 		read -p "
 
 Yay berhasil diinstall ...
@@ -121,11 +118,11 @@ Enable Chaotic-aur ? [Y/n] :
 
 " yn
 	case $yn in
-		[Yy]*) pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-		pacman-key --lsign-key 3056513887B78AEB
-		pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --asdeps --noconfirm --overwrite "*"
-		rm -rf /etc/pacman.conf
-		cp $DIR/sub/inst.d/src/pacman-chaotic.conf /etc/pacman.conf
+		[Yy]*) sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+		sudo pacman-key --lsign-key 3056513887B78AEB
+		sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --asdeps --noconfirm --overwrite "*"
+		sudo rm -rf /etc/pacman.conf
+		sudo cp $DIR/sub/inst.d/src/pacman-chaotic.conf /etc/pacman.conf
 		read -p "
 
 Chaotic-aur berhasil diaktifkan ...
@@ -152,10 +149,10 @@ Enable repo 32 bit ? [Y/n] :
 
 " yn
 	case $yn in
-		[Yy]*) rm -rf /etc/pacman.conf
-		rm -rf /var/db
-		cp $DIR/sub/inst.d/src/pacman-32bit.conf /etc/pacman.conf
-		pacman -Syu --noconfirm --overwrite "*"
+		[Yy]*) sudo rm -rf /etc/pacman.conf
+		sudo rm -rf /var/db
+		sudo cp $DIR/sub/inst.d/src/pacman-32bit.conf /etc/pacman.conf
+		sudo pacman -Syu --noconfirm --overwrite "*"
 		read -p "
 
 Reository 32bit berhasil diaktifkan ...
