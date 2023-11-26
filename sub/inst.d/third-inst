@@ -155,7 +155,7 @@ Enable repo 32 bit ? [Y/n] :
 		sudo pacman -Syu --noconfirm --overwrite "*"
 		read -p "
 
-Reository 32bit berhasil diaktifkan ...
+Repository 32bit berhasil diaktifkan ...
 
 " ret
 			case $ret in
